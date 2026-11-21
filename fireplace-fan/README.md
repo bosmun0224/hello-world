@@ -173,7 +173,13 @@ The test points T1–T3 are marked on the schematic.
    - **T1** (wire from the junction box to the sensor) should beep. If it doesn't, power isn't leaving the junction box for the fan circuit.
    - **T2** (black wire from the sensor to the knob) should beep once the sensor is hot. If T1 beeps but T2 never does, **the sensor is dead**: replace it.
    - **T3** (wire from the knob back to the junction box) should beep with the knob turned up. If T2 beeps but T3 doesn't, **the knob is dead** (or one of its ceramic splices #2/#3 is loose): replace it.
-3. **Replacing the sensor:** unplug the fireplace, remove the bracket's one screw, and read the code stamped on the back of the disc (for example `F120-20F`). Buy one with the same code and size, move the two wires across, and screw the bracket back.
+3. **Bypass test (done on this unit: FAN still dead).** With the fireplace unplugged, unplug inline connectors #15 and #16 and join the two ends that come **out of the junction box** to each other. Then plug the fireplace in with the blower in FAN. That skips both the sensor and the knob. If the blower still doesn't run, **the fault is in the junction box**: the hot wire that feeds the fan circuit, the wire back to the FAN outlet, or the FAN outlet itself. Unplug and reconnect #15/#16 the original way afterwards.
+4. **Inside the junction box** (Figure 33 shows the inside):
+   - First **cut the power**: unplug the fireplace, or switch off its breaker if it's hardwired. Then confirm **REM is dead** with the tester before opening anything.
+   - Take the cover off. Look for a wire that has slipped out of a wire nut, a loose or burnt screw terminal on the FAN outlet, or a push-in ("backstab") connection that has let go. Pay most attention to the black wire leaving for the fan circuit, the black wire coming back to the FAN outlet, and the white (neutral) wire to the FAN outlet.
+   - Tighten or redo anything loose with 105°C-rated wire, as the label requires. If that's beyond your comfort level, it's a short job for an electrician.
+   - With the power back on and the bypass still in, a non-contact tester held at the FAN outlet's narrow slot shows whether hot is reaching it.
+5. **Replacing the sensor:** unplug the fireplace, remove the bracket's one screw, and read the code stamped on the back of the disc (for example `F120-20F`). Buy one with the same code and size, move the two wires across, and screw the bracket back.
 
 If FAN works again with the sensor reconnected or replaced, the fireplace's own
 automatic fan is back: the blower starts once the firebox warms up, and the knob
