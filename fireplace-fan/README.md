@@ -145,25 +145,37 @@ and connect the Pico to your computer with Thonny open so you can watch the log:
 
 ![Likely blower wiring now, and with the Pico](docs/schematic.png)
 
-This fireplace is a **Heat & Glo with direct spark ignition**, controlled by a
-**RAM-1MC1-06** module (#6). The schematic above follows Heat & Glo's service
-diagram for that module family (Mountain View Hearth Products' *DSI Troubleshooting
-Guide*, pages 4–7), matched to the parts in the photos:
+This fireplace is a **Heat & Glo ST-TRC** with direct spark ignition (a
+**RAM-1MC1-06** module, #6) and the factory **GFK-160A fan kit**. The schematic
+above follows the ST-TRC installer's manual (Figure 33, *Fan Wiring Diagram*,
+page 35) and Heat & Glo's *DSI Troubleshooting Guide* (pages 4–7), matched to
+the parts in the photos:
 
 - **Junction box** (right side of the compartment) takes in 120 V and has two outlets:
   - **REM** (#13): always on. The blower is plugged in here right now, which is why it runs full blast with no control.
-  - **FAN** (#14): powered *through the speed knob* (#1, by way of ceramic splices #2 and #3). This is where the blower is meant to plug in. It has no power right now.
-- **RAM module** (#6): the gas *ignition* controller. It sparks the ignitor, opens the gas valve, and watches the flame. It is **not** a temperature sensor and has no fan wires. Leave it, the on/off switch's yellow wire (#7), the gas valve and the gas line alone.
-- **Fan temperature switch:** the factory diagram doesn't have one; FAN is fed only through the knob. Some units add one with a blower kit. The loose spade connector (#16) may be where one connected.
+  - **FAN** (#14): where the blower is meant to plug in. Power reaches it through the **speed knob** (#1) **and** the fan kit's **temperature sensor switch**, one after the other. The sensor closes when the firebox warms up (about 120°F) and opens when it cools (about 90°F). FAN has no power right now.
+- **Temperature sensor switch:** a small disc on a bracket, joined to the rest of the wiring by inline spade connectors (drawn that way in Figure 33). **#15 and #16 are almost certainly its two leads, and #16 is unplugged.** That alone would keep the FAN outlet dead.
+- **RAM module** (#6): the gas *ignition* controller. It sparks the ignitor, opens the gas valve, and watches the flame. It is **not** a temperature sensor and has no fan wires. Leave it, the on/off switch and its wires (#7, #20–22), the gas valve and the gas line alone.
 
 ### Why the FAN outlet is dead: checks
 
 **Do these with the fireplace off, cooled down, and its power cord unplugged.**
 
-1. **Connectors #15 and #16:** follow both wires to their far ends. #15's wire has woven high-temperature insulation, so it probably runs to something on the hot firebox. That could be a fan temperature switch, or the burner's **high-temperature safety limit switch**, which Heat & Glo fits in some units. Only push #16 back onto a terminal it clearly came off. **Never jumper or bypass these wires**: if they belong to the safety limit, bypassing it defeats the fireplace's overheat protection.
-2. **Speed knob:** set a multimeter to continuity (or ohms) across the knob's two wires (black and blue). Fully up should read close to 0 Ω or beep. Fully down/off should read open. If it reads open at every setting, the knob is dead (it's a standard fireplace blower speed control and easy to replace).
-3. **Ceramic splices #2 and #3:** unscrew each one and check the wires inside are tight and not burnt.
-4. **Plug back in, then test:** a lamp in the FAN outlet with the knob turned up should light. If it does, plug the blower back into FAN to get speed control again.
+1. **Find the sensor switch:** follow the wires from #15 and #16 to a small round disc on a bracket. It's probably on the underside of the firebox or near the blower. The ST-TRC's parts list has no high-temperature limit switch, but confirm both wires end at that disc before connecting anything.
+2. **Reconnect #16** if it clearly mates with the connector on the disc's other lead.
+3. **Test the sensor:** pull one lead off and set a multimeter to continuity across the disc's two terminals.
+   - Cold: **open (no beep)**. That's normal.
+   - After a minute of hair dryer heat: it **should beep**.
+   - If it never closes, replace it with a fan snap-disc switch that closes around 120°F and opens around 90°F, with the same size and mounting. Take the old one with you to match.
+4. **Speed knob:** set a multimeter to continuity (or ohms) across the knob's two wires (black and blue). Fully up should read close to 0 Ω or beep. Fully down/off should read open. If it reads open at every setting, the knob is dead (it's a standard fireplace blower speed control and easy to replace).
+5. **Ceramic splices #2 and #3:** unscrew each one and check the wires inside are tight and not burnt.
+6. **Check the rest of the circuit:** once you've confirmed which two wires are the sensor's, you can join them with a short insulated jumper *for this test only*. Then plug the fireplace back in, put a lamp in the FAN outlet and turn the knob up. The lamp should light. Unplug the fireplace and remove the jumper afterwards.
+
+If FAN works again with the sensor reconnected or replaced, the fireplace's own
+automatic fan is back: the blower starts once the firebox warms up, and the knob
+sets the speed. The Pico build below then becomes optional. What it adds is
+adjustable on/off temperatures, a temperature log, and a fan that runs if
+anything fails.
 
 ## Hook up the Pico (no wiring changes)
 

@@ -31,8 +31,8 @@
   </defs>
 
   <!-- ================= PANEL 1 ================= -->
-  <text x="30" y="42" class="title">1 · How your fireplace is wired</text>
-  <text x="30" y="68" class="sub">From Heat &amp; Glo's service diagram for RAM-1MC1 fireplaces, matched to your photos. Hot side only.</text>
+  <text x="30" y="42" class="title">1 · How your ST-TRC is wired</text>
+  <text x="30" y="68" class="sub">From the ST-TRC installer's manual (Fig. 33) and Heat &amp; Glo's DSI guide, matched to your photos.</text>
 
   <!-- hot bus -->
   <text x="60" y="108" text-anchor="middle" class="lbl">120 V in</text>
@@ -63,13 +63,13 @@
   <rect x="330" y="256" width="40" height="28" rx="12" class="splice"/>
   <text x="350" y="276" text-anchor="middle" class="lbl">B</text>
   <path d="M370 270 H400" class="hot"/>
-  <rect x="400" y="232" width="135" height="76" rx="8" class="assumed"/>
+  <rect x="400" y="232" width="135" height="76" rx="8" class="box" style="fill:#fff4e0;stroke:#b8740a"/>
   <circle cx="420" cy="270" r="5" fill="#222"/>
   <circle cx="515" cy="270" r="5" fill="#222"/>
   <path d="M420 270 L505 246" stroke="#222" stroke-width="3"/>
-  <text x="467" y="298" text-anchor="middle" class="sm">only if fitted</text>
-  <text x="467" y="330" text-anchor="middle" class="lbl">Fan temp switch?</text>
-  <text x="467" y="348" text-anchor="middle" class="sm">(loose plug #16?)</text>
+  <text x="467" y="298" text-anchor="middle" class="sm">closes ~120°F</text>
+  <text x="467" y="330" text-anchor="middle" class="lbl">Temp sensor switch</text>
+  <text x="467" y="348" text-anchor="middle" class="warn">prime suspect (#15/#16)</text>
   <path d="M535 270 H560" class="hot"/>
   <use href="#outlet" x="560" y="239"/>
   <text x="660" y="268" text-anchor="middle" class="lbl">FAN</text>
@@ -103,8 +103,8 @@
   <!-- notes -->
   <text x="30" y="535" class="sm">• Neutral (white) and ground (green) return to the junction box and aren't drawn.</text>
   <text x="30" y="559" class="sm">• The RAM module lights and watches the burner. It isn't a temperature sensor and has no fan wires.</text>
-  <text x="30" y="583" class="sm">• The factory diagram feeds FAN through the speed knob only. A fan temp switch, if your unit has one, sits in the</text>
-  <text x="44" y="605" class="sm">dashed box. Either way, the dead FAN outlet means something in that row is open.</text>
+  <text x="30" y="583" class="sm">• FAN only gets power when the knob is on AND the temp sensor switch (GFK-160A fan kit) is hot: it closes</text>
+  <text x="44" y="605" class="sm">around 120°F and opens around 90°F. With FAN dead, that switch or its loose lead (#16) is the likeliest cause.</text>
 
   <line x1="30" y1="635" x2="970" y2="635" class="divider"/>
 
