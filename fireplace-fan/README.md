@@ -141,6 +141,8 @@ and connect the Pico to your computer with Thonny open so you can watch the log:
 
 ![Labeled photo of the right side: blower, switch panel, loose connector](docs/photo2-labeled.jpg)
 
+![Labeled photo of the burner controls: gas valve and on/off switch](docs/photo5-labeled.jpg)
+
 ![Likely blower wiring now, and with the Pico](docs/schematic.png)
 
 This fireplace is a **Heat & Glo with direct spark ignition**, controlled by a
