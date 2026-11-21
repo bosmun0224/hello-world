@@ -158,7 +158,7 @@ Guide*, pages 4–7), matched to the parts in the photos:
 
 **Do these with the fireplace off, cooled down, and its power cord unplugged.**
 
-1. **Connector #16:** follow its wire both ways. If it belongs on a terminal of the knob, the junction box or a small disc-shaped switch, push it back on firmly. That alone may bring the FAN outlet back.
+1. **Connectors #15 and #16:** follow both wires to their far ends. #15's wire has woven high-temperature insulation, so it probably runs to something on the hot firebox. That could be a fan temperature switch, or the burner's **high-temperature safety limit switch**, which Heat & Glo fits in some units. Only push #16 back onto a terminal it clearly came off. **Never jumper or bypass these wires**: if they belong to the safety limit, bypassing it defeats the fireplace's overheat protection.
 2. **Speed knob:** set a multimeter to continuity (or ohms) across the knob's two wires (black and blue). Fully up should read close to 0 Ω or beep. Fully down/off should read open. If it reads open at every setting, the knob is dead (it's a standard fireplace blower speed control and easy to replace).
 3. **Ceramic splices #2 and #3:** unscrew each one and check the wires inside are tight and not burnt.
 4. **Plug back in, then test:** a lamp in the FAN outlet with the knob turned up should light. If it does, plug the blower back into FAN to get speed control again.
@@ -173,10 +173,18 @@ The Pico doesn't need the FAN outlet at all:
 4. Clamp the **thermocouple** to bare metal on the **underside of the firebox**, where it gets hot within a few minutes of the burner lighting.
 
 The blower then runs **full speed** whenever it's on, because the speed knob only
-feeds the FAN outlet. The relay, charger and Pico are consumer electronics, so put
-them where they stay cool. After an hour of fire, the spot should still be
-comfortable to hold your hand on. If the compartment gets hotter than that, use a
-short extension cord to bring them out.
+feeds the FAN outlet.
+
+**Check the compartment temperature before leaving electronics in it.** The
+junction box label says any replacement wire must be rated for 105°C, so parts of
+this compartment get hot. The relay and USB charger are consumer electronics, and
+the Pico and MAX6675 are rated to 85°C. The thermocouple can measure it for you:
+
+1. For the first fire, keep the Pico, relay and charger **outside** the fireplace on a short extension cord from REM. Let the probe hang in the open air of the compartment, near the REM outlet, not touching metal.
+2. Run the fire for an hour with the blower **off** (that's the hottest case) and read the log in Thonny.
+3. **Under about 40°C (105°F)**, it's fine to move the electronics inside. Keep them on the floor of the compartment, away from the firebox. **Above that**, keep them outside, either beside the fireplace or behind the front trim.
+
+Then clamp the probe to the firebox as described below.
 
 ## Install in the fireplace
 
