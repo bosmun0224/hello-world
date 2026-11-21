@@ -156,7 +156,7 @@ the parts in the photos:
 - **Junction box** (right side of the compartment) takes in 120 V and has two outlets:
   - **REM** (#13): always on. The blower is plugged in here right now, which is why it runs full blast with no control.
   - **FAN** (#14): where the blower is meant to plug in. Power reaches it through the **speed knob** (#1) **and** the fan kit's **temperature sensor switch**, one after the other. The sensor closes when the firebox warms up (about 120°F) and opens when it cools (about 90°F). FAN has no power right now.
-- **Temperature sensor switch:** a small disc on a bracket, joined to the rest of the wiring by inline spade connectors (drawn that way in Figure 33). **#15 and #16 are almost certainly its two leads, and #16 is unplugged.** That alone would keep the FAN outlet dead.
+- **Temperature sensor switch** (#23): a small disc on a bracket on the left wall. The fan circuit leaves and re-enters the junction box on two leads with woven high-temperature insulation, each joined by an inline spade connector (#15 and #16, both connected). One runs from the junction box to the sensor; the other runs from the knob back to the junction box.
 - **RAM module** (#6): the gas *ignition* controller. It sparks the ignitor, opens the gas valve, and watches the flame. It is **not** a temperature sensor and has no fan wires. Leave it, the on/off switch and its wires (#7, #20–22), the gas valve and the gas line alone.
 
 ### Why the FAN outlet is dead: checks
