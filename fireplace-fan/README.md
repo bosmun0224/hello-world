@@ -161,17 +161,19 @@ the parts in the photos:
 
 ### Why the FAN outlet is dead: checks
 
-**Do these with the fireplace off, cooled down, and its power cord unplugged.**
+As traced on this unit, the power runs **junction box → temp sensor (#23) →
+speed knob → back to the junction box → FAN outlet**. The sensor comes first, so
+when the fireplace is cold **none of the knob's wires are live**. That's normal.
+The test points T1–T3 are marked on the schematic.
 
-1. **The sensor switch (#23, photo 6)** is the round metal dome on a small bracket on the left wall of the compartment, behind the speed knob. The bracket is held by one screw. Remove the screw and tilt the bracket out to see the back. It has two terminals, and usually a stamped code such as `F120-20F` that gives its temperatures. Photograph it, and check that a wire is attached to each terminal. Follow the second wire. It probably ends at #15 or #16.
-2. **Reconnect #16** if it clearly mates with the connector on the disc's other lead.
-3. **Test the sensor:** pull one lead off and set a multimeter to continuity across the disc's two terminals.
-   - Cold: **open (no beep)**. That's normal.
-   - After a minute of hair dryer heat: it **should beep**.
-   - If it never closes, replace it with a fan snap-disc switch that closes around 120°F and opens around 90°F, with the same size and mounting. Take the old one with you to match.
-4. **Speed knob:** set a multimeter to continuity (or ohms) across the knob's two wires (black and blue). Fully up should read close to 0 Ω or beep. Fully down/off should read open. If it reads open at every setting, the knob is dead (it's a standard fireplace blower speed control and easy to replace).
-5. **Ceramic splices #2 and #3:** unscrew each one and check the wires inside are tight and not burnt.
-6. **Check the rest of the circuit:** once you've confirmed which two wires are the sensor's, you can join them with a short insulated jumper *for this test only*. Then plug the fireplace back in, put a lamp in the FAN outlet and turn the knob up. The lamp should light. Unplug the fireplace and remove the jumper afterwards.
+1. **End-to-end test (no tools):** plug a lamp into **FAN** and turn the knob all the way up. Warm the sensor's bracket with a hair dryer for 1–2 minutes; you may hear a faint click.
+   - **Lamp comes on:** the sensor, knob and wiring all work. The real problem is that the sensor doesn't get to 120°F during a fire, which a very low flame would explain. Fix the flame, fit a lower-temperature disc, or let the Pico take over with a lower ON temperature.
+   - **Lamp stays off:** go on to step 2.
+2. **Non-contact voltage tester, fireplace plugged in, hair dryer still on the sensor:**
+   - **T1** (wire from the junction box to the sensor) should beep. If it doesn't, power isn't leaving the junction box for the fan circuit.
+   - **T2** (black wire from the sensor to the knob) should beep once the sensor is hot. If T1 beeps but T2 never does, **the sensor is dead**: replace it.
+   - **T3** (wire from the knob back to the junction box) should beep with the knob turned up. If T2 beeps but T3 doesn't, **the knob is dead** (or one of its ceramic splices #2/#3 is loose): replace it.
+3. **Replacing the sensor:** unplug the fireplace, remove the bracket's one screw, and read the code stamped on the back of the disc (for example `F120-20F`). Buy one with the same code and size, move the two wires across, and screw the bracket back.
 
 If FAN works again with the sensor reconnected or replaced, the fireplace's own
 automatic fan is back: the blower starts once the firebox warms up, and the knob
