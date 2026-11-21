@@ -8,158 +8,164 @@
   .lbl { font-size: 16px; font-weight: bold; }
   .sm { font-size: 14px; fill: #444; }
   .warn { font-size: 14px; fill: #c0392b; font-weight: bold; }
+  .ok { font-size: 14px; fill: #b8740a; font-weight: bold; }
   .box { fill: #f4f5f7; stroke: #333; stroke-width: 2; }
   .assumed { fill: #fafafa; stroke: #777; stroke-width: 2; stroke-dasharray: 7 5; }
+  .gasbox { fill: #fdeceb; stroke: #c0392b; stroke-width: 2; }
   .hot { stroke: #222; stroke-width: 4; fill: none; }
-  .hot-a { stroke: #222; stroke-width: 4; fill: none; stroke-dasharray: 10 7; }
-  .neu-a { stroke: #9aa0a6; stroke-width: 4; fill: none; stroke-dasharray: 10 7; }
-  .gnd-a { stroke: #2e9e44; stroke-width: 4; fill: none; stroke-dasharray: 10 7; }
+  .yel { stroke: #d4a017; stroke-width: 4; fill: none; }
   .lv { stroke: #2a6fdb; stroke-width: 3; fill: none; }
   .tc { stroke: #e67e22; stroke-width: 3; fill: none; }
   .splice { fill: #efe6d2; stroke: #8a7c5c; stroke-width: 2; }
   .divider { stroke: #ddd; stroke-width: 2; }
 </style></head>
 <body>
-<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="1215" viewBox="0 0 1000 1215">
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="1250" viewBox="0 0 1000 1250">
+  <defs>
+    <g id="outlet">
+      <rect x="0" y="0" width="140" height="62" rx="8" fill="#fff" stroke="#333" stroke-width="2"/>
+      <rect x="14" y="18" width="5" height="16" fill="#333"/>
+      <rect x="30" y="18" width="5" height="16" fill="#333"/>
+      <path d="M20 44 a4.5 4.5 0 0 1 9 0 v4 h-9 z" fill="#333"/>
+    </g>
+  </defs>
 
   <!-- ================= PANEL 1 ================= -->
-  <text x="30" y="42" class="title">1 · How it's most likely wired now</text>
-  <text x="30" y="68" class="sub">Solid = seen in your photo. Dashed = typical for a fireplace blower kit, still to confirm.</text>
+  <text x="30" y="42" class="title">1 · How your fireplace is wired</text>
+  <text x="30" y="68" class="sub">From Heat &amp; Glo's service diagram for RAM-1MC1 fireplaces, matched to your photos. Hot side only.</text>
 
-  <!-- plug -->
-  <rect x="30" y="100" width="120" height="320" rx="10" class="assumed"/>
-  <text x="90" y="125" text-anchor="middle" class="lbl">Power</text>
-  <text x="90" y="145" text-anchor="middle" class="lbl">cord</text>
-  <text x="140" y="183" text-anchor="end" class="sm">hot</text>
-  <text x="140" y="353" text-anchor="end" class="sm">neutral</text>
-  <text x="140" y="393" text-anchor="end" class="sm">ground</text>
+  <!-- hot bus -->
+  <text x="60" y="108" text-anchor="middle" class="lbl">120 V in</text>
+  <text x="60" y="126" text-anchor="middle" class="sm">(hot)</text>
+  <path d="M60 135 V450" class="hot"/>
+  <text x="46" y="350" class="sm" transform="rotate(-90 46 350)" text-anchor="middle">junction box</text>
 
-  <!-- hot path -->
-  <path d="M150 190 H230" class="hot-a"/>
-  <rect x="230" y="176" width="44" height="28" rx="12" class="splice"/>
-  <text x="252" y="196" text-anchor="middle" class="lbl">A</text>
-  <path d="M274 190 H320" class="hot"/>
+  <!-- Rung 1: REM -->
+  <path d="M60 170 H560" class="hot"/>
+  <use href="#outlet" x="560" y="139"/>
+  <text x="660" y="168" text-anchor="middle" class="lbl">REM</text>
+  <text x="660" y="188" text-anchor="middle" class="sm">always on</text>
+  <text x="715" y="160" class="ok">← blower is plugged in here now,</text>
+  <text x="730" y="180" class="ok">so it runs full blast</text>
+  <text x="300" y="160" text-anchor="middle" class="sm">straight from the house power, no control</text>
 
-  <!-- knob / rheostat -->
-  <rect x="320" y="140" width="150" height="100" rx="8" class="box"/>
-  <path d="M340 190 l10 0 l6 -14 l12 28 l12 -28 l12 28 l12 -28 l12 28 l12 -28 l6 14 l10 0" stroke="#222" stroke-width="3" fill="none"/>
-  <path d="M365 222 L430 160" stroke="#222" stroke-width="2.5"/>
-  <path d="M430 160 l-12 2 l8 8 z" fill="#222"/>
-  <text x="395" y="268" text-anchor="middle" class="lbl">① Speed knob</text>
-  <text x="395" y="288" text-anchor="middle" class="sm">(rheostat)</text>
+  <!-- Rung 2: FAN via knob -->
+  <path d="M60 270 H105" class="hot"/>
+  <rect x="105" y="256" width="40" height="28" rx="12" class="splice"/>
+  <text x="125" y="276" text-anchor="middle" class="lbl">A</text>
+  <path d="M145 270 H170" class="hot"/>
+  <rect x="170" y="230" width="140" height="80" rx="8" class="box"/>
+  <path d="M182 270 l10 0 l6 -12 l11 24 l11 -24 l11 24 l11 -24 l11 24 l11 -24 l6 12 l10 0" stroke="#222" stroke-width="3" fill="none"/>
+  <path d="M205 296 L268 244" stroke="#222" stroke-width="2.5"/>
+  <path d="M268 244 l-11 2 l7 7 z" fill="#222"/>
+  <text x="240" y="330" text-anchor="middle" class="lbl">① Speed knob</text>
+  <path d="M310 270 H330" class="hot"/>
+  <rect x="330" y="256" width="40" height="28" rx="12" class="splice"/>
+  <text x="350" y="276" text-anchor="middle" class="lbl">B</text>
+  <path d="M370 270 H400" class="hot"/>
+  <rect x="400" y="232" width="135" height="76" rx="8" class="assumed"/>
+  <circle cx="420" cy="270" r="5" fill="#222"/>
+  <circle cx="515" cy="270" r="5" fill="#222"/>
+  <path d="M420 270 L505 246" stroke="#222" stroke-width="3"/>
+  <text x="467" y="298" text-anchor="middle" class="sm">only if fitted</text>
+  <text x="467" y="330" text-anchor="middle" class="lbl">Fan temp switch?</text>
+  <text x="467" y="348" text-anchor="middle" class="sm">(loose plug #16?)</text>
+  <path d="M535 270 H560" class="hot"/>
+  <use href="#outlet" x="560" y="239"/>
+  <text x="660" y="268" text-anchor="middle" class="lbl">FAN</text>
+  <text x="660" y="288" text-anchor="middle" class="sm">switched</text>
+  <text x="715" y="260" class="warn">← blower's normal spot,</text>
+  <text x="730" y="280" class="warn">no power right now</text>
 
-  <path d="M470 190 H516" class="hot"/>
-  <rect x="516" y="176" width="44" height="28" rx="12" class="splice"/>
-  <text x="538" y="196" text-anchor="middle" class="lbl">B</text>
-  <path d="M560 190 H620" class="hot-a"/>
-
-  <!-- snap disc -->
-  <rect x="620" y="130" width="170" height="120" rx="8" class="assumed"/>
-  <circle cx="650" cy="190" r="6" fill="#222"/>
-  <circle cx="760" cy="190" r="6" fill="#222"/>
-  <path d="M650 190 L748 158" stroke="#222" stroke-width="3.5"/>
-  <path d="M620 190 H644 M766 190 H790" stroke="#222" stroke-width="4" stroke-dasharray="10 7"/>
-  <text x="705" y="230" text-anchor="middle" class="sm">closes when hot</text>
-  <text x="705" y="272" text-anchor="middle" class="lbl">Fan temp switch</text>
-  <text x="705" y="292" text-anchor="middle" class="sm">(snap disc, not in photo)</text>
-  <text x="705" y="312" text-anchor="middle" class="warn">← probably the dead part</text>
-
-  <!-- to motor -->
-  <path d="M790 190 H880 V228" class="hot-a"/>
-  <circle cx="880" cy="270" r="42" class="assumed"/>
-  <text x="880" y="280" text-anchor="middle" style="font-size:30px;font-weight:bold">M</text>
-  <text x="930" y="276" class="lbl">Blower</text>
-
-  <!-- neutral return -->
-  <path d="M880 312 V360 H150" class="neu-a"/>
-  <text x="520" y="384" text-anchor="middle" class="sm">neutral (white) runs straight back to the cord</text>
-
-  <!-- ground -->
-  <path d="M150 400 H250 V418" class="gnd-a"/>
-  <path d="M228 418 H272 M235 427 H265 M243 436 H257" stroke="#2e9e44" stroke-width="3"/>
-  <text x="285" y="432" class="sm">ground (green) to the metal chassis</text>
+  <!-- Burner side -->
+  <rect x="160" y="372" width="810" height="128" rx="10" fill="#fdf3f2" stroke="#e8b4ae" stroke-width="1.5" stroke-dasharray="6 4"/>
+  <text x="180" y="394" class="warn">Burner side: leave alone</text>
+  <!-- Rung 3: on/off switch -->
+  <path d="M60 425 H180" class="hot"/>
+  <rect x="180" y="404" width="150" height="44" rx="8" class="box"/>
+  <text x="255" y="432" text-anchor="middle" class="lbl">On/off switch</text>
+  <path d="M330 425 H560" class="yel"/>
+  <text x="445" y="416" text-anchor="middle" class="sm">yellow (#7)</text>
+  <!-- Rung 4: module power -->
+  <path d="M60 450 V478 H560" class="hot"/>
+  <text x="300" y="470" text-anchor="middle" class="sm">black</text>
+  <rect x="560" y="404" width="140" height="86" rx="8" class="gasbox"/>
+  <text x="630" y="432" text-anchor="middle" class="lbl">RAM module</text>
+  <text x="630" y="452" text-anchor="middle" class="sm">#6, ignition</text>
+  <text x="630" y="472" text-anchor="middle" class="sm">controller</text>
+  <path d="M700 447 H740" stroke="#c0392b" stroke-width="3"/>
+  <rect x="740" y="404" width="215" height="86" rx="8" class="gasbox"/>
+  <text x="847" y="432" text-anchor="middle" class="lbl">Gas valve</text>
+  <text x="847" y="452" text-anchor="middle" class="sm">spark ignitor,</text>
+  <text x="847" y="472" text-anchor="middle" class="sm">flame sensor</text>
 
   <!-- notes -->
-  <text x="30" y="477" class="sm">• Splices A and B are the two ceramic wire nuts in your photo, one on each of the knob's wires (black and blue).</text>
-  <text x="30" y="501" class="sm">• The knob and the temp switch may be in the opposite order. It works the same: the blower only gets power</text>
-  <text x="44" y="523" class="sm">when the knob is on AND the switch is hot (closed).</text>
-  <text x="30" y="547" class="sm">• Not shown: gas valve, red millivolt wires and gas line (separate system, don't touch) and the gray box (unknown).</text>
+  <text x="30" y="535" class="sm">• Neutral (white) and ground (green) return to the junction box and aren't drawn.</text>
+  <text x="30" y="559" class="sm">• The RAM module lights and watches the burner. It isn't a temperature sensor and has no fan wires.</text>
+  <text x="30" y="583" class="sm">• The factory diagram feeds FAN through the speed knob only. A fan temp switch, if your unit has one, sits in the</text>
+  <text x="44" y="605" class="sm">dashed box. Either way, the dead FAN outlet means something in that row is open.</text>
 
-  <line x1="30" y1="577" x2="970" y2="577" class="divider"/>
+  <line x1="30" y1="635" x2="970" y2="635" class="divider"/>
 
   <!-- ================= PANEL 2 ================= -->
-  <g transform="translate(0,25)">
-  <text x="30" y="608" class="title">2 · With the Pico</text>
-  <text x="30" y="634" class="sub">The only change inside the fireplace: join the dead switch's two wires and put the probe in its place.</text>
+  <g transform="translate(0,40)">
+  <text x="30" y="640" class="title">2 · With the Pico (no wiring changes)</text>
+  <text x="30" y="666" class="sub">The relay plugs into REM, the blower plugs into the relay. The Pico decides when the blower runs.</text>
 
   <!-- Probe chain (top row) -->
-  <rect x="330" y="670" width="150" height="70" rx="8" class="box"/>
-  <text x="405" y="701" text-anchor="middle" class="lbl">Pi Pico</text>
-  <text x="405" y="722" text-anchor="middle" class="sm">main.py</text>
+  <rect x="330" y="700" width="150" height="70" rx="8" class="box"/>
+  <text x="405" y="731" text-anchor="middle" class="lbl">Pi Pico</text>
+  <text x="405" y="752" text-anchor="middle" class="sm">main.py</text>
 
-  <rect x="560" y="670" width="140" height="70" rx="8" class="box"/>
-  <text x="630" y="701" text-anchor="middle" class="lbl">MAX6675</text>
-  <text x="630" y="722" text-anchor="middle" class="sm">board</text>
-  <path d="M480 705 H560" class="lv"/>
-  <text x="520" y="695" text-anchor="middle" class="sm">SPI</text>
+  <rect x="560" y="700" width="140" height="70" rx="8" class="box"/>
+  <text x="630" y="731" text-anchor="middle" class="lbl">MAX6675</text>
+  <text x="630" y="752" text-anchor="middle" class="sm">board</text>
+  <path d="M480 735 H560" class="lv"/>
+  <text x="520" y="725" text-anchor="middle" class="sm">SPI</text>
 
-  <rect x="780" y="660" width="190" height="90" rx="8" class="box" style="fill:#fdf1e6"/>
-  <text x="875" y="692" text-anchor="middle" class="lbl">Thermocouple</text>
-  <text x="875" y="713" text-anchor="middle" class="sm">mounted where the</text>
-  <text x="875" y="732" text-anchor="middle" class="sm">old switch was</text>
-  <path d="M700 705 H780" class="tc"/>
-  <text x="740" y="695" text-anchor="middle" class="sm">probe</text>
+  <rect x="780" y="690" width="190" height="90" rx="8" class="box" style="fill:#fdf1e6"/>
+  <text x="875" y="722" text-anchor="middle" class="lbl">Thermocouple</text>
+  <text x="875" y="743" text-anchor="middle" class="sm">clamped to the</text>
+  <text x="875" y="762" text-anchor="middle" class="sm">firebox underside</text>
+  <path d="M700 735 H780" class="tc"/>
+  <text x="740" y="725" text-anchor="middle" class="sm">probe</text>
 
   <!-- USB charger -->
-  <rect x="330" y="780" width="150" height="46" rx="8" class="box"/>
-  <text x="405" y="809" text-anchor="middle" class="lbl">USB charger</text>
-  <path d="M405 780 V740" class="lv"/>
+  <rect x="330" y="810" width="150" height="46" rx="8" class="box"/>
+  <text x="405" y="839" text-anchor="middle" class="lbl">USB charger</text>
+  <path d="M405 810 V770" class="lv"/>
 
   <!-- Relay -->
-  <rect x="40" y="700" width="230" height="290" rx="10" class="box" style="fill:#eef3fb"/>
-  <text x="155" y="735" text-anchor="middle" class="lbl">IoT Relay</text>
-  <rect x="120" y="688" width="70" height="24" rx="4" fill="#3a9d5d" stroke="#222" stroke-width="1.5"/>
-  <text x="155" y="705" text-anchor="middle" style="font-size:13px;font-weight:bold;fill:#fff">+   −</text>
-  <path d="M330 705 H300 V676 H155 V688" class="lv"/>
-  <text x="300" y="666" text-anchor="middle" class="sm" style="fill:#2a6fdb">GP15→+  GND→−</text>
+  <rect x="40" y="730" width="230" height="290" rx="10" class="box" style="fill:#eef3fb"/>
+  <text x="155" y="765" text-anchor="middle" class="lbl">IoT Relay</text>
+  <rect x="120" y="718" width="70" height="24" rx="4" fill="#3a9d5d" stroke="#222" stroke-width="1.5"/>
+  <text x="155" y="735" text-anchor="middle" style="font-size:13px;font-weight:bold;fill:#fff">+   −</text>
+  <path d="M330 735 H300 V706 H155 V718" class="lv"/>
+  <text x="300" y="696" text-anchor="middle" class="sm" style="fill:#2a6fdb">GP15→+  GND→−</text>
 
-  <text x="60" y="808" class="sm">Always ON</text>
-  <path d="M175 803 H330" class="hot"/>
-  <text x="60" y="888" class="lbl">Normally ON</text>
-  <text x="60" y="958" class="sm" style="fill:#999">Normally OFF (empty)</text>
+  <text x="60" y="838" class="sm">Always ON</text>
+  <path d="M175 833 H330" class="hot"/>
+  <text x="60" y="918" class="lbl">Normally ON</text>
+  <text x="60" y="988" class="sm" style="fill:#999">Normally OFF (empty)</text>
 
-  <!-- wall outlet -->
-  <rect x="80" y="1030" width="150" height="50" rx="8" class="box"/>
-  <text x="155" y="1061" text-anchor="middle" class="lbl">Wall outlet</text>
-  <path d="M155 1030 V990" class="hot"/>
+  <!-- REM outlet feeding relay -->
+  <use href="#outlet" x="85" y="1060"/>
+  <text x="185" y="1089" text-anchor="middle" class="lbl">REM</text>
+  <text x="185" y="1107" text-anchor="middle" class="sm">outlet</text>
+  <path d="M155 1060 V1020" class="hot"/>
 
-  <!-- Blower chain (bottom row) -->
-  <path d="M190 883 H300" class="hot"/>
-  <text x="318" y="873" text-anchor="middle" class="sm">cord</text>
-  <path d="M300 883 H360" class="hot"/>
-  <rect x="360" y="869" width="44" height="28" rx="12" class="splice"/>
-  <text x="382" y="889" text-anchor="middle" class="lbl">A</text>
-  <path d="M404 883 H440" class="hot"/>
-  <rect x="440" y="848" width="110" height="70" rx="8" class="box"/>
-  <text x="495" y="888" text-anchor="middle" class="lbl">① Knob</text>
-  <path d="M550 883 H586" class="hot"/>
-  <rect x="586" y="869" width="44" height="28" rx="12" class="splice"/>
-  <text x="608" y="889" text-anchor="middle" class="lbl">B</text>
-  <path d="M630 883 H670" class="hot"/>
-  <rect x="670" y="843" width="150" height="80" rx="8" style="fill:#e9f7ee;stroke:#2e9e44;stroke-width:2.5"/>
-  <text x="745" y="874" text-anchor="middle" class="lbl">Jumper</text>
-  <text x="745" y="895" text-anchor="middle" class="sm">old switch wires</text>
-  <text x="745" y="913" text-anchor="middle" class="sm">joined together</text>
-  <path d="M820 883 H870" class="hot"/>
-  <circle cx="910" cy="883" r="40" class="box"/>
-  <text x="910" y="893" text-anchor="middle" style="font-size:28px;font-weight:bold">M</text>
-  <text x="910" y="945" text-anchor="middle" class="lbl">Blower</text>
-  <text x="560" y="960" text-anchor="middle" class="sm">(neutral and ground unchanged, not drawn)</text>
+  <!-- Blower chain -->
+  <path d="M190 913 H850" class="hot"/>
+  <text x="520" y="903" text-anchor="middle" class="sm">blower's own plug and cord</text>
+  <circle cx="890" cy="913" r="40" class="box"/>
+  <text x="890" y="923" text-anchor="middle" style="font-size:28px;font-weight:bold">M</text>
+  <text x="890" y="975" text-anchor="middle" class="lbl">Blower</text>
 
-  <!-- notes -->
-  <text x="30" y="1120" class="sm">• Blue = 3.3 V low-voltage wiring. Black = 120 V, but all of it is in the cords and the sealed relay, so you plug things in and don't wire it.</text>
-  <text x="30" y="1144" class="sm">• Pico off, crashed or unplugged → "Normally ON" outlet stays on → blower runs at the knob's speed (fail-safe).</text>
-  <text x="30" y="1168" class="sm">• The knob still sets speed and can still turn the blower fully off.</text>
+  <text x="300" y="1010" class="sm">• Pico off or crashed → the "Normally ON" outlet stays on → blower runs (fail-safe).</text>
+  <text x="300" y="1034" class="sm">• Blue = 3.3 V wiring. All 120 V stays inside cords and the sealed relay.</text>
+  <text x="300" y="1058" class="sm">• The blower runs full speed when on, since the knob isn't in this path.</text>
+  <text x="314" y="1082" class="sm">For speed control, the FAN outlet has to work again first.</text>
+  <text x="300" y="1106" class="sm">• Keep the relay, charger and Pico where they stay cool (not on hot metal).</text>
   </g>
 </svg>
 </body></html>

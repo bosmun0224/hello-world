@@ -143,33 +143,48 @@ and connect the Pico to your computer with Thonny open so you can watch the log:
 
 ![Likely blower wiring now, and with the Pico](docs/schematic.png)
 
-The blower circuit in most fireplace blower kits is simple: **cord → speed knob →
-fan temp switch → blower → back to the cord**, with everything in series. The
-diagram above is that typical layout matched to the parts in the photo. Confirm
-it on your unit before changing anything:
+This fireplace is a **Heat & Glo with direct spark ignition**, controlled by a
+**RAM-1MC1-06** module (#6). The schematic above follows Heat & Glo's service
+diagram for that module family (Mountain View Hearth Products' *DSI Troubleshooting
+Guide*, pages 4–7), matched to the parts in the photos:
 
-**Do all of this with the fireplace off, cooled down, and its power cord unplugged.**
+- **Junction box** (right side of the compartment) takes in 120 V and has two outlets:
+  - **REM** (#13): always on. The blower is plugged in here right now, which is why it runs full blast with no control.
+  - **FAN** (#14): powered *through the speed knob* (#1, by way of ceramic splices #2 and #3). This is where the blower is meant to plug in. It has no power right now.
+- **RAM module** (#6): the gas *ignition* controller. It sparks the ignitor, opens the gas valve, and watches the flame. It is **not** a temperature sensor and has no fan wires. Leave it, the on/off switch's yellow wire (#7), the gas valve and the gas line alone.
+- **Fan temperature switch:** the factory diagram doesn't have one; FAN is fed only through the knob. Some units add one with a blower kit. The loose spade connector (#16) may be where one connected.
 
-1. **Find the rating plate.** It's a metal tag, often on a chain in this compartment or riveted to a side wall. The model number leads to the manual, which has the real wiring diagram.
-2. **Photograph the label on the gray plastic box** (#6 in the photo) and trace its wires. It might be a junction box, a remote-control receiver, or part of the gas controls.
-3. **Follow the two black wires leaving the ceramic splices** (#2 and #3) to their other ends. One should lead to the power cord. The other leads toward the temp switch or the blower.
-4. **Find the fan temp switch.** It's a disc about 1" across with two spade terminals, usually on the underside of the firebox or on the blower housing, often stamped with something like `F120-20F` or `L120`.
-5. **Test the switch with a multimeter on continuity**, with one wire pulled off it:
-   - Cold: **no beep (open)**. *That's normal.* The switch is supposed to be open when cold.
-   - After heating it with a hair dryer for a minute: it **should beep**. If it never closes when hot, it's dead.
-6. **Test the knob:** continuity across its two wires (black and blue). It should be open in the OFF click and beep when turned up.
-7. **Quick proof, no Pico needed:** still unplugged, join the temp switch's two wires together with a short insulated jumper. Plug in and turn the knob. If the blower runs, the temp switch was the problem and the rest of the circuit is fine. That jumper is exactly what the Pico setup uses.
+### Why the FAN outlet is dead: checks
 
-The red wires (#4) and the gas line (#5) belong to the gas valve, a separate
-system. Don't connect anything to them.
+**Do these with the fireplace off, cooled down, and its power cord unplugged.**
+
+1. **Connector #16:** follow its wire both ways. If it belongs on a terminal of the knob, the junction box or a small disc-shaped switch, push it back on firmly. That alone may bring the FAN outlet back.
+2. **Speed knob:** set a multimeter to continuity (or ohms) across the knob's two wires (black and blue). Fully up should read close to 0 Ω or beep. Fully down/off should read open. If it reads open at every setting, the knob is dead (it's a standard fireplace blower speed control and easy to replace).
+3. **Ceramic splices #2 and #3:** unscrew each one and check the wires inside are tight and not burnt.
+4. **Plug back in, then test:** a lamp in the FAN outlet with the knob turned up should light. If it does, plug the blower back into FAN to get speed control again.
+
+## Hook up the Pico (no wiring changes)
+
+The Pico doesn't need the FAN outlet at all:
+
+1. Plug the **IoT Relay** into the **REM** outlet (always on).
+2. Plug the **blower** into the relay's **"Normally ON"** outlet.
+3. Plug the **USB charger** for the Pico into the relay's **"Always ON"** outlet.
+4. Clamp the **thermocouple** to bare metal on the **underside of the firebox**, where it gets hot within a few minutes of the burner lighting.
+
+The blower then runs **full speed** whenever it's on, because the speed knob only
+feeds the FAN outlet. The relay, charger and Pico are consumer electronics, so put
+them where they stay cool. After an hour of fire, the spot should still be
+comfortable to hold your hand on. If the compartment gets hotter than that, use a
+short extension cord to bring them out.
 
 ## Install in the fireplace
 
 1. **Unplug the fireplace blower** and, for gas, turn the fireplace off and let it cool completely.
-2. **Mount the probe where the old sensor was.** That spot is usually a snap disc screwed or magnet-mounted to the underside of the firebox, or on the blower housing. Bolt a ring/washer probe under the old sensor's screw, or clamp the probe tip firmly against the bare metal. Good metal contact matters more than anything else.
+2. **Mount the probe on the underside of the firebox.** Bolt a ring/washer probe under an existing screw, or clamp the probe tip firmly against bare metal. Good metal contact matters more than anything else.
 3. **Route the probe lead** out of the hot area to where the electronics will sit. Keep it away from moving fan blades and sharp edges.
 4. Place the Pico, the MAX6675 board, and the IoT Relay somewhere **cool**, such as beside the fireplace or behind the lower grill if it stays comfortable to touch.
-5. Plug the blower into **"Normally ON"** and the USB charger into **"Always ON"**.
+5. Plug the relay into the **REM** outlet, the blower into **"Normally ON"**, and the USB charger into **"Always ON"**.
 
 ## Tune it
 
