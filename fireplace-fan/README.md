@@ -135,6 +135,32 @@ and connect the Pico to your computer with Thonny open so you can watch the log:
 
 ---
 
+## Map your fireplace's existing wiring
+
+![Labeled photo of the control compartment](docs/photo-labeled.jpg)
+
+![Likely blower wiring now, and with the Pico](docs/schematic.png)
+
+The blower circuit in most fireplace blower kits is simple: **cord → speed knob →
+fan temp switch → blower → back to the cord**, with everything in series. The
+diagram above is that typical layout matched to the parts in the photo. Confirm
+it on your unit before changing anything:
+
+**Do all of this with the fireplace off, cooled down, and its power cord unplugged.**
+
+1. **Find the rating plate.** It's a metal tag, often on a chain in this compartment or riveted to a side wall. The model number leads to the manual, which has the real wiring diagram.
+2. **Photograph the label on the gray plastic box** (#6 in the photo) and trace its wires. It might be a junction box, a remote-control receiver, or part of the gas controls.
+3. **Follow the two black wires leaving the ceramic splices** (#2 and #3) to their other ends. One should lead to the power cord. The other leads toward the temp switch or the blower.
+4. **Find the fan temp switch.** It's a disc about 1" across with two spade terminals, usually on the underside of the firebox or on the blower housing, often stamped with something like `F120-20F` or `L120`.
+5. **Test the switch with a multimeter on continuity**, with one wire pulled off it:
+   - Cold: **no beep (open)**. *That's normal.* The switch is supposed to be open when cold.
+   - After heating it with a hair dryer for a minute: it **should beep**. If it never closes when hot, it's dead.
+6. **Test the knob:** continuity across its two wires (black and blue). It should be open in the OFF click and beep when turned up.
+7. **Quick proof, no Pico needed:** still unplugged, join the temp switch's two wires together with a short insulated jumper. Plug in and turn the knob. If the blower runs, the temp switch was the problem and the rest of the circuit is fine. That jumper is exactly what the Pico setup uses.
+
+The red wires (#4) and the gas line (#5) belong to the gas valve, a separate
+system. Don't connect anything to them.
+
 ## Install in the fireplace
 
 1. **Unplug the fireplace blower** and, for gas, turn the fireplace off and let it cool completely.
