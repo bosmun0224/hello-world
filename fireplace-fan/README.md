@@ -143,6 +143,8 @@ and connect the Pico to your computer with Thonny open so you can watch the log:
 
 ![Labeled photo of the burner controls: gas valve and on/off switch](docs/photo5-labeled.jpg)
 
+![Labeled photo of the left wall: speed knob and the fan temperature sensor switch](docs/photo6-labeled.jpg)
+
 ![Likely blower wiring now, and with the Pico](docs/schematic.png)
 
 This fireplace is a **Heat & Glo ST-TRC** with direct spark ignition (a
@@ -161,7 +163,7 @@ the parts in the photos:
 
 **Do these with the fireplace off, cooled down, and its power cord unplugged.**
 
-1. **Find the sensor switch:** follow the wires from #15 and #16 to a small round disc on a bracket. It's probably on the underside of the firebox or near the blower. The ST-TRC's parts list has no high-temperature limit switch, but confirm both wires end at that disc before connecting anything.
+1. **The sensor switch (#23, photo 6)** is the round metal dome on a small bracket on the left wall of the compartment, behind the speed knob. The bracket is held by one screw. Remove the screw and tilt the bracket out to see the back. It has two terminals, and usually a stamped code such as `F120-20F` that gives its temperatures. Photograph it, and check that a wire is attached to each terminal. Follow the second wire. It probably ends at #15 or #16.
 2. **Reconnect #16** if it clearly mates with the connector on the disc's other lead.
 3. **Test the sensor:** pull one lead off and set a multimeter to continuity across the disc's two terminals.
    - Cold: **open (no beep)**. That's normal.
