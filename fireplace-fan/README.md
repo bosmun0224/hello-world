@@ -139,6 +139,8 @@ and connect the Pico to your computer with Thonny open so you can watch the log:
 
 ![Labeled photo of the control compartment](docs/photo-labeled.jpg)
 
+![Labeled photo of the right side: blower, switch panel, loose connector](docs/photo2-labeled.jpg)
+
 ![Likely blower wiring now, and with the Pico](docs/schematic.png)
 
 The blower circuit in most fireplace blower kits is simple: **cord → speed knob →
