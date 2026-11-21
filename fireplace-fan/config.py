@@ -7,7 +7,7 @@
 # The stock snap-disc fan switch on most fireplaces closes around 120F and
 # opens around 90F. These numbers are measured wherever YOU mount the probe,
 # so watch a real fire and tune them (see "Tune it" in the README).
-FAN_ON_F = 120      # blower turns on at or above this
+FAN_ON_F = 110      # blower turns on at or above this (stock disc is 120; lower here because the flame is weak)
 FAN_OFF_F = 90      # blower turns off at or below this (must be lower than FAN_ON_F)
 
 # Once the blower turns on, keep it on at least this long (stops on/off chatter).

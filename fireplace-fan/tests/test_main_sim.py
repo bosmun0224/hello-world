@@ -145,13 +145,16 @@ class TestMainSimulation(unittest.TestCase):
         sim = Sim(fire, duration_s=2400).run()
         self.assertTrue(sim.fan_on_at(1), "blower should run during startup")
         self.assertFalse(sim.fan_on_at(30), "cold fireplace: blower off")
-        # 120 F is reached at t = 60 + 50/0.5 = 160 s
-        self.assertFalse(sim.fan_on_at(155))
-        self.assertTrue(sim.fan_on_at(162))
+        # Expected switch times follow config.py: the fire heats 0.5 F/s from
+        # 70 F starting at 60 s, and cools 0.25 F/s from 300 F starting at 1200 s.
+        import config
+        t_on = 60 + (config.FAN_ON_F - 70) / 0.5
+        t_off = 1200 + (300 - config.FAN_OFF_F) / 0.25
+        self.assertFalse(sim.fan_on_at(t_on - 5))
+        self.assertTrue(sim.fan_on_at(t_on + 2))
         self.assertTrue(sim.fan_on_at(1500))
-        # cools to 90 F at t = 1200 + 210/0.25 = 2040 s
-        self.assertTrue(sim.fan_on_at(2035))
-        self.assertFalse(sim.fan_on_at(2045))
+        self.assertTrue(sim.fan_on_at(t_off - 5))
+        self.assertFalse(sim.fan_on_at(t_off + 5))
         self.assertGreater(sim.wdt_fed, 1000)
         self.assertIn("blower ON", sim.log)
 

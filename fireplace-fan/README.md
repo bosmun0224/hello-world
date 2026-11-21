@@ -28,17 +28,35 @@ stock switch can't:
 
 ---
 
-## Parts (about $60–80)
+## Parts (about $70–100)
 
-| Part | Notes |
-|---|---|
-| Raspberry Pi Pico (or Pico W / Pico 2) **with headers** | about $5–8 |
-| **MAX6675 board + K-type thermocouple** | about $6–10 kit. Get a probe with a **fiberglass or stainless-braided lead** long enough to reach a cool spot (1–2 m). A ring/washer-style or screw-in probe is easiest to mount. A MAX31855 board also works (set `SENSOR = "MAX31855"`). |
-| **Digital Loggers "IoT Relay"** (IoT Power Relay II) | about $30–35. Sealed outlet box, switched by a 3.3 V signal. |
-| USB phone charger + micro-USB cable | Powers the Pico (USB-C if you have a Pico 2 clone that uses it). |
-| Female-to-female jumper wires | 5 for the sensor board, plus 2 longer wires for the relay input. |
-| *Optional:* momentary push button | For the "always on" override. |
-| *Optional:* small project box | Keeps it tidy. |
+Chosen for this fireplace: the blower plugs into a relay on the **REM** outlet,
+and the probe goes on the old temperature sensor's bracket (#23). No soldering is
+needed.
+
+**Required**
+
+| Part | What to look for | About |
+|---|---|---|
+| Raspberry Pi **Pico H** (or Pico WH / Pico 2 H) | The **"H"** means the headers come soldered on. The "W" (Wi-Fi) version only matters if you want phone monitoring later. | $5–8 |
+| **Screw-terminal breakout board for Pico** | The Pico plugs in and every pin gets a screw terminal, so the wires can't wiggle loose. | $8–15 |
+| **MAX6675 thermocouple module** (the board alone) | Small red or blue board with a 2-screw terminal for the probe. A MAX31855 board also works (set `SENSOR = "MAX31855"`). | $3–8 |
+| **K-type "washer" (ring) thermocouple** | Ring sized for the bracket's screw (M4 or M5 is likely; a bigger ring works with a washer). **Fiberglass or stainless-braided lead, 2 m (6 ft).** | $5–10 |
+| **Digital Loggers "IoT Relay"** (IoT Power Relay II) | Sealed outlet box with Always ON / Normally ON / Normally OFF outlets, switched by the Pico's 3.3 V signal. | $30–40 |
+| **USB wall charger** (5 V, 1 A or more) | Any phone charger. | $5–10 |
+| **Micro-USB cable, 6–10 ft** | Powers the Pico, and lets it sit away from the heat. Also used to program it. | $5–8 |
+| **Male-to-female jumper wires** | 5 for MAX6675 to breakout board. | $5 |
+| **2-conductor low-voltage wire, about 6 ft** | Thermostat wire (18/2 or 22/2) or speaker wire, for Pico to IoT Relay input. | $5 |
+
+**Optional**
+
+| Part | Why | About |
+|---|---|---|
+| Plug-in **fan speed controller** (the kind sold for inline duct fans, rated 1 A+) | Gets speed control back. It goes between the relay's Normally ON outlet and the blower plug. | $15–25 |
+| Momentary **push button** | The "always on" override button (GP14 to GND). | $3 |
+| Small **plastic project box** | Holds the Pico, breakout and MAX6675. | $5–10 |
+| **Aluminum foil tape** (HVAC type) | Backup way to hold the probe flat against the metal. | $8 |
+| Basic **multimeter** | For checks like the ones in this guide; a non-contact tester only tells you if power is present. | $15–25 |
 
 ---
 
