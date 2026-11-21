@@ -179,6 +179,34 @@ sets the speed. The Pico build below then becomes optional. What it adds is
 adjustable on/off temperatures, a temperature log, and a fan that runs if
 anything fails.
 
+### Low flame (gas side: for a gas technician)
+
+The ST-TRC's gas valve (#17) is an on/off valve with a **fixed** pressure
+regulator. There's no high/low setting, so a full-size flame is the normal state
+and a "super low" flame means something is off. This project doesn't touch the
+gas side.
+
+**Safe for a homeowner to check:**
+- The **shut-off valve** on the gas line to the fireplace is fully open. On a quarter-turn valve, the handle lines up with the pipe.
+- The **logs and ember material** aren't covering the burner ports. The manual says not to press embers into the ports or put them on the rear ports.
+- On **propane**: the tank isn't low. Cold weather also drops tank pressure.
+- Whether it's **weaker while other gas appliances run** (furnace, water heater), which points to an undersized supply line.
+
+**For the technician**, from the ST-TRC installer's manual (Step 7, page 34, and the parts list):
+
+| | Natural gas | Propane |
+|---|---|---|
+| Inlet pressure, minimum | 5.0" w.c. | 11.0" w.c. |
+| Inlet pressure, maximum | 14.0" w.c. | 14.0" w.c. |
+| Manifold pressure | 3.5" w.c. | 10.0" w.c. |
+| Burner orifice | #32 DMS (573-800) | 1.8 mm (501-801) |
+
+There are 1/8" NPT test ports on the inlet and outlet sides of the valve. Good
+inlet pressure with low manifold pressure points at the valve's regulator; low
+inlet pressure points at the supply. A dirty or blocked orifice, or dust and
+spider webs in the burner's air intake, also cause a weak flame. In a compartment
+this dusty, those are worth checking.
+
 ## Hook up the Pico (no wiring changes)
 
 The Pico doesn't need the FAN outlet at all:
